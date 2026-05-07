@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="UTF-8">
+        <meta type="viewport" content="width=device-width, initial-scale=1.0">
+        <title>dashboard</title>
+        <link rel="stylesheet" th:href="@{/css/admin-dashboard.css}">
+    </head>
+    <body>
+        <nav class="navbar">
+            <a href="/member/tasks">Tasks</a>
+            <a href="/member/projects">Projects</a>
+            <a href="/logout">LogOut</a>
+        </nav>
+        <div class="container">
+            <h1>Project Summary</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Project ID</th>
+                        <th>Project Name</th>
+                        <th>Description</th>
+                        <th>Created By</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="project : ${projects}">
+                        <td th:text="${project.id}"></td>
+                        <td th:text="${project.name}"></td>
+                        <td th:text="${project.description}"></td>
+                        <td th:text="${project.createdBy}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+     </body>
+</html>

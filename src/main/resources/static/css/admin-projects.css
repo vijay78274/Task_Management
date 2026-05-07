@@ -1,0 +1,123 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background-color: black;
+}
+
+nav {
+    width: 100%;
+    padding: 10px 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav a {
+    color: white;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+nav a:hover {
+    color: grey;
+}
+
+.container {
+    width: 95%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 30px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    width: 95%;
+    margin: 30px auto;
+}
+
+h1 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+th, td {
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    text-align: center;
+}
+
+th {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #eee;
+    font-weight: 700;
+}
+
+td {
+    color: white;
+}
+
+tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+form {
+    margin: 0;
+}
+
+button {
+
+    padding: 10px 16px;
+
+    border: none;
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+    background-color: white;
+    color: black;
+
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background-color: grey;
+    color: white;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.create-btn{
+
+    text-decoration: none;
+
+    padding: 12px 18px;
+
+    border-radius: 8px;
+
+    background-color: white;
+    color: black;
+
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+.create-btn:hover{
+    background-color: grey;
+    color: white;
+}

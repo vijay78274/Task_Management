@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>dashboard</title>
+        <link rel="stylesheet" th:href="@{/css/admin-dashboard.css}">
+    </head>
+    <body>
+        <nav class="navbar">
+            <a href="/admin/tasks">Tasks</a>
+            <a href="/admin/projects">Projects</a>
+            <a href="/logout">LogOut</a>
+        </nav>
+        <div class="container">
+            <div class="header">
+                <h1>Task Summary</h1>
+                <a th:href="@{/admin/create_task}" class="create-btn">
+                + Create Task
+                </a>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Task ID</th>
+                        <th>Task Name</th>
+                        <th>Assigned To</th>
+                        <th>Due date</th>
+                        <th>Project</th>
+                        <th>Status</th>
+                        <th>Update</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="task : ${tasks}">
+                        <td th:text="${task.id}"></td>
+                        <td th:text="${task.title}"></td>
+                        <td th:text="${task.assignedTo}"></td>
+                        <td th:text="${task.dueDate}"></td>
+                        <td th:text="${task.project}"></td>
+                        <td th:text="${task.status}"></td>
+                        <td> 
+                            <form th:action="@{/admin/update_task/{id}(id=${task.id})}" method="get">
+                                <button type="submit">update</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+     </body>
+</html>

@@ -1,0 +1,62 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav {
+    width: 100%;
+    padding: 10px 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+nav a:hover {
+    color: grey
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    width: 95%;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 30px;
+}
+.items{
+    padding: 10px;
+    height: 250px;
+    border-radius: 10%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+.id{
+    font-size: 1.2rem;
+    color: white;
+}
+.name{
+    font-size: 1.2rem;
+    color: white;
+}
+.des{
+    color: grey;
+}
+.dead{
+    color:grey;
+}

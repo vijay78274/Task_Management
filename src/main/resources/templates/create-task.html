@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="UTF-8">
+        <meta type="viewport" content="width=device-width, initial-scale=1.0">
+        <title>document</title>
+        <link rel="stylesheet" th:href="@{/css/create-task.css}">
+    </head>
+    <body>
+       <div class="container">
+            <h1>Update Task</h1>
+           <form id="createTaskForm" th:action="@{/admin/create_task}" method="post">
+            <div class="input-group">
+                <input placeholder="Enter task name" type="text" name="title" required>
+            </div>
+            <div class="input-group">
+            <select name="assignedTo" required>
+                    <option value="">Assign To</option>
+                    <option th:each="user : ${users}" th:value="${user}" th:text="${user}"></option>
+            </select>
+            </div>
+            <div class="input-group">
+                <input placeholder="Enter dueDate" type="date" name="dueDate" required>     
+            </div>
+            <div class="input-group">
+                <select name="project" required>
+                    <option value="">Select Project</option>
+                    <option th:each="project : ${projects}" th:value="${project}" th:text="${project}"></option>
+            </select>
+            </div>
+            <button type="submit" class="button">Create</button>
+           </form>
+       </div>
+    </body>
+</html>

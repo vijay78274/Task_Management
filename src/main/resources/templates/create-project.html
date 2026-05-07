@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="UTF-8">
+        <meta type="viewport" content="width=device-width, initial-scale=1.0">
+        <title>document</title>
+        <link rel="stylesheet" th:href="@{/css/create-project.css}">
+    </head>
+    <body>
+       <div class="container">
+            <h1>Create Project</h1>
+           <form id="createProjectForm" th:action="@{/admin/create_project}" method="post">
+            <div class="input-group">
+                <input placeholder="Enter project name" type="text" name="title" required>
+            </div>
+            <div class="input-group">
+                <input placeholder="Enter description" type="text" name="description" required>     
+            </div>
+            <button type="submit" class="button">Create</button>
+           </form>
+       </div>
+    </body>
+</html>

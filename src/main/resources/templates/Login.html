@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="UTF-8">
+        <meta type="viewport" content="width=device-width, initial-scale=1.0">
+        <title>document</title>
+        <link rel="stylesheet" th:href="@{/css/Login.css}">
+    </head>
+    <body>
+       <div class="container">
+            <h1>Login</h1>
+           <form id="loginForm" th:action="@{/perform_login}" method="post">
+            <div class="input-group">
+                <input placeholder="Enter username" type="text" name="username" required>
+            </div>
+            <div class="input-group">
+                <input placeholder="Enter password" type="password" name="password" required>     
+            </div>
+            <div class="links">
+                <a href="/signup">New User? Signup</a>
+            </div>
+            <button type="submit" class="button">LogIn</button>
+           </form>
+           <div th:if="${errorMessage}" style="color:red;" >
+            <p th:text="${errorMessage}"></p>
+            </div>
+            <div th:if="${param.logout}" style="color: green;">
+                You have been logged out successfully.
+            </div>
+       </div>
+    </body>
+</html>

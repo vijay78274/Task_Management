@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="UTF-8">
+        <meta type="viewport" content="width=device-width, initial-scale=1.0">
+        <title>dashboard</title>
+        <link rel="stylesheet" th:href="@{/css/admin-projects.css}">
+    </head>
+    <body>
+        <nav class="navbar">
+            <a href="/admin/tasks">Tasks</a>
+            <a href="/admin/projects">Projects</a>
+            <a href="/logout">LogOut</a>
+        </nav>
+        <div class="container">
+            <div class="header">
+                <h1>Task Summary</h1>
+                <a th:href="@{/admin/create_project}" class="create-btn">
+                + Create Project
+                </a>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Project ID</th>
+                        <th>Project Name</th>
+                        <th>Description</th>
+                        <th>Created By</th>
+                        <th>Update</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="project : ${projects}">
+                        <td th:text="${project.id}"></td>
+                        <td th:text="${project.name}"></td>
+                        <td th:text="${project.description}"></td>
+                        <td th:text="${project.createdBy}"></td>
+                        <td> 
+                            <form th:action="@{/admin/update_project/{id}(id=${project.id})}" method="get">
+                                <button type="submit">update</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+     </body>
+</html>

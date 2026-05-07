@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="UTF-8">
+        <meta type="viewport" content="width=device-width, initial-scale=1.0">
+        <title>dashboard</title>
+        <link rel="stylesheet" th:href="@{/css/admin-dashboard.css}">
+    </head>
+    <body>
+        <nav class="navbar">
+            <a href="/member/tasks">Tasks</a>
+            <a href="/member/projects">Projects</a>
+            <a href="/logout">LogOut</a>
+        </nav>
+        <div class="container">
+            <h1>Task Summary</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Task ID</th>
+                        <th>Task Name</th>
+                        <th>Assigned To</th>
+                        <th>Due date</th>
+                        <th>Project</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="task : ${tasks}">
+                        <td th:text="${task.id}"></td>
+                        <td th:text="${task.title}"></td>
+                        <td th:text="${task.assignedTo}"></td>
+                        <td th:text="${task.dueDate}"></td>
+                        <td th:text="${task.project}"></td>
+                        <td th:text="${task.status}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+     </body>
+</html>
