@@ -1,5 +1,7 @@
 package com.example.team_task_manager.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.team_task_manager.MyUserDetails;
+import com.example.team_task_manager.Models.Role;
 import com.example.team_task_manager.Models.Status;
 import com.example.team_task_manager.Models.TaskSummary;
 import com.example.team_task_manager.Services.ProjectService;
@@ -29,8 +32,22 @@ public class AdminController {
     @Autowired
     UserService userService;
     @GetMapping("/tasks")
-    public String showTasks(Model model) {
-        model.addAttribute("tasks",taskService.getTaskSummaries());
+    public String showTasks(Model model, @RequestParam(required = false) String status,
+
+    @RequestParam(required = false) String projectName,
+
+    @RequestParam(required = false) String userName,
+
+    @RequestParam(required = false) Boolean overdue) {
+        List<TaskSummary> tasks = taskService.getTaskSummaries(
+            status,
+            projectName,
+            userName,
+            overdue
+        );
+        model.addAttribute("projects", projectService.getprojectNames());
+        model.addAttribute("users", userService.getUserNames());
+        model.addAttribute("tasks",tasks);
         return "admin-dashboard"; 
     }
     @GetMapping("/projects")
@@ -86,5 +103,35 @@ public class AdminController {
     public String createTask(@RequestParam String title, @RequestParam String assignedTo, @RequestParam String dueDate, @RequestParam String project) {
             taskService.createTask(title, assignedTo, project, dueDate);
             return "redirect:/admin/tasks";
+    }
+    @PostMapping("/delete_task/{id}")
+    public String deleteTask(@PathVariable Long id){
+        taskService.deleteTask(id);
+        return "redirect:/admin/tasks";
+    }
+    @PostMapping("/delete_project/{id}")
+    public String deleteProject(@PathVariable Long id){
+        projectService.deleteProject(id);
+        return "redirect:/admin/projects";
+    }
+    @GetMapping("/users")
+    public String showUsers(Model model) {
+        model.addAttribute("users",userService.getAll());
+        return "admin-users"; 
+    }
+    @GetMapping("/update_user/{id}")
+    public String updateUserPage(@PathVariable Long id, Model model) {
+        model.addAttribute("user",userService.getUserById(id));
+        return "update-user";
+    }
+    @PostMapping("/update_user/{id}")
+    public String updateUser(@PathVariable Long id, @RequestParam String name, @RequestParam Role role) {
+        userService.updateUser(id, name, role);
+        return "redirect:/admin/users";
+    }
+    @PostMapping("/delete_user/{id}")
+    public String deleteUser(@PathVariable Long id){
+        userService.deleteUser(id);
+        return "redirect:/admin/users";
     }
 }

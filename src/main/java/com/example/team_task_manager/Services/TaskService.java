@@ -37,8 +37,14 @@ public class TaskService {
         repository.save(task);
     }
 
-    public List<TaskSummary> getTaskSummaries(){
-        List<Tasks> tasks = repository.findAll();
+    public List<TaskSummary> getTaskSummaries(String status, String project, String username, Boolean overdue){
+        
+        List<Tasks> tasks = repository.filterTasks(
+            status,
+            project,
+            username,
+            overdue
+        );
         List<TaskSummary> list = new ArrayList<>();
         for(Tasks task: tasks){
             String userName = task.getAssignedTo().getUserName();
@@ -75,5 +81,8 @@ public class TaskService {
         task.setDueDate(LocalDate.parse(dueDate));
         task.setStatus(status);
         repository.save(task);
+    }
+    public void deleteTask(Long taskId){
+        repository.deleteById(taskId);
     }
 }

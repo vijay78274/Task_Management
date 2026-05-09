@@ -29,12 +29,17 @@ public class UserService {
     public void deleteUser(Long id){
         userRepository.deleteById(id);
     }
-    public void updateUser(Long id, Users user){
-        Users oldUser = new Users();
-        oldUser.setName(user.getName());
+    public void updateUser(Long id, String name, Role role){
+        Users oldUser = userRepository.findById(id).orElseThrow(()->new RuntimeException("User not found"));
+        oldUser.setName(name);
+        oldUser.setRole(role);
         userRepository.save(oldUser);
     }
     public List<String> getUserNames(){
         return userRepository.userNames();
+    }
+    public Users getUserById(Long id){
+        Users user = userRepository.findById(id).orElseThrow(()-> new RuntimeException("User not found"));
+        return user;
     }
 }

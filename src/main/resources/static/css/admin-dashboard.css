@@ -121,3 +121,67 @@ button:hover {
     background-color: grey;
     color: white;
 }
+.filter-container {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    margin-bottom: 25px;
+}
+
+.filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+.filter-form select,
+.filter-form button {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #dcdcdc;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s ease;
+}
+
+.filter-form select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #333;
+}
+
+.filter-btn {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.filter-btn:hover {
+    background-color: #1d4ed8;
+}
+
+.clear-btn {
+    background-color: #f3f4f6;
+    color: #333;
+    border: 1px solid #d1d5db;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.clear-btn:hover {
+    background-color: #e5e7eb;
+}
